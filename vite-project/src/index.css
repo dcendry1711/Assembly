@@ -69,6 +69,10 @@ header > p {
   padding: .2em .4em;
 }
 
+.lang-btn.lost {
+  opacity: 0;
+}
+
 /*Section - hasło */
 
 .hasło {
@@ -107,6 +111,16 @@ header > p {
   border: none;
   border-radius: 7px;
   cursor: pointer;
+  background-color: #FCBA29;
+  text-transform: uppercase;
+}
+
+.klawisz.poprawny {
+  background-color: #10A95B;
+}
+
+.klawisz.niepoprawny {
+  background-color: #EC5D49;
 }
 
 /*NOWA GRA */

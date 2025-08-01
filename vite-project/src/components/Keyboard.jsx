@@ -1,19 +1,30 @@
+import clsx from 'clsx'
+
 export function Keyboard(props){
 
-    const letterArr = props.alphabet.split('')
+    const keyboard = props.letterArr.map( (letter) => {
 
-    const keypad = letterArr.map( letter => {
-
-        const stylKlawisza = {backgroundColor: '#FCBA29'}
-
+        const czyPodanoLitere = props.podaneLitery.includes(letter)
+        const czyLiteraPrawidlowa = czyPodanoLitere && props.slowo.includes(letter)
+        const czyLiteraZla = czyPodanoLitere && !props.slowo.includes(letter)
+        
+        const classNameKlawisz = clsx('klawisz', czyLiteraPrawidlowa && 'poprawny', czyLiteraZla && 'niepoprawny')
+    
         return (
-            <button className="klawisz" style={stylKlawisza} key={letter}>{letter}</button>
+            <button 
+                key={letter} 
+                className={classNameKlawisz}
+                onClick={() => props.podajLitere(letter)}
+                disabled={props.koniecGry}
+                >
+                    {letter}
+                </button>
         )
     })
 
     return(
         <section className="klawiatura">
-           {keypad}
+            {keyboard}
         </section>
     )
 }
